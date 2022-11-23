@@ -10,7 +10,7 @@ const Navbar = () => {
     </>
 
     return (
-        <nav className=''>
+        <nav className='mt-4'>
             <div className="flex justify-between items-center">
                 <img className='max-w-[200px]' src={brandImage} alt="brand-icon" />
 
