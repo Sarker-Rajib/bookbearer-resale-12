@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import brandImage from '../../../Assets/Images/brand-logo.png';
 
 const Navbar = () => {
     const menuItems = <>
         <li className='mr-2'><Link to='/'>Home</Link></li>
-        <li className='mr-2'><Link to='/'>Image-Gallery</Link></li>
         <li className='mr-2'><Link to='/blog'>Blog</Link></li>
         <li><Link to='/'>Profile</Link></li>
     </>
@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <nav className=''>
             <div className="flex justify-between items-center">
-                <h1 className='text-2xl'>resell-com-bazar</h1>
+                <img className='max-w-[200px]' src={brandImage} alt="brand-icon" />
 
                 <ul className='flex'>
                     {menuItems}
