@@ -1,14 +1,48 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 
 const Register = () => {
+    const { createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const imageHostKey = process.env.REACT_APP_imgbb_key
+    const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
 
 
     const handleUserRegistration = (data) => {
         const profileImage = data.img[0];
-         
-        console.log(profileImage);
+        const formData = new FormData();
+        formData.append('profileImage', profileImage);
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    const profile = {
+                        displayName: name,
+                        photoURL: imgData.data.url
+                    }
+                    console.log(profile);
+                }
+
+            })
+
+        // updateUser(profile)
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        const email = data.email;
+        const password = data.password;
+        const name = data.name;
+
+        createUser(email, password)
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.error(error))
     };
 
     return (
