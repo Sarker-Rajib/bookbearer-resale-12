@@ -30,6 +30,10 @@ export const router = createBrowserRouter([
         ]
     },
     {
+        path: '/dashboard',
+        element: <></>
+    },
+    {
         path: '*',
         element: <NotFound></NotFound>
     }

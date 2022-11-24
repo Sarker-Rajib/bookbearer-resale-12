@@ -1,50 +1,47 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
+// import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const imageHostKey = process.env.REACT_APP_imgbb_key
-    const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
+    const imgbbkey = process.env.REACT_APP_imgbb_key
 
 
     const handleUserRegistration = (data) => {
-        const profileImage = data.img[0];
+        const image = data.img[0];
         const formData = new FormData();
-        formData.append('profileImage', profileImage);
+        formData.append('image', image);
 
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(imgData => {
-                if (imgData.success) {
-                    const profile = {
-                        displayName: name,
-                        photoURL: imgData.data.url
-                    }
-                    console.log(profile);
-                }
-
-            })
-
-        // updateUser(profile)
-        //     .then(data => {
-        //         console.log(data);
-        //     })
         const email = data.email;
         const password = data.password;
         const name = data.name;
 
         createUser(email, password)
             .then(data => {
-                console.log(data);
+                fetch(`https://api.imgbb.com/1/upload?key=${imgbbkey}`, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(res => res.json())
+                    .then(imgData => {
+                        const photoURL = imgData.data.display_url;
+                        const profile = {
+                            displayName: name,
+                            photoURL: photoURL
+                        }
+                        updateUser(profile)
+                            .then(() => {
+                                toast.success('User Created Successful')
+                            })
+                    })
             })
             .catch(error => console.error(error))
     };
+
 
     return (
         <div className='py-6'>
@@ -86,8 +83,6 @@ const Register = () => {
                                 { required: 'Password Required' })} />
                         {errors.password && <span className='text-red-400'>{errors.password?.message}</span>}
                     </div>
-
-
 
                     <input type="submit" className='btn w-full py-2 bg-slate-200 rounded' />
                 </form>

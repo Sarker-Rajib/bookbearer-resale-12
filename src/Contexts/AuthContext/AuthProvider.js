@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
         updateUser,
         logIn,
         logOut,
+        currentUser,
     }
 
     return (
