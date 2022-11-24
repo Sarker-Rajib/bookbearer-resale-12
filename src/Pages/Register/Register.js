@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 
 const Register = () => {
@@ -90,6 +91,8 @@ const Register = () => {
 
                     <input type="submit" className='btn w-full py-2 bg-slate-200 rounded' />
                 </form>
+
+                <p className='pt-4'>Have an Account ? <Link className='text-green-500' to='/login'>Please LogIn</Link></p>
             </div>
         </div>
     );

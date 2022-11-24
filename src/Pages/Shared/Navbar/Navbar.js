@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import brandImage from '../../../Assets/Images/brand-logo.png';
 
 const Navbar = () => {
+
+
     const menuItems = <>
         <li className='mr-2'><Link to='/'>Home</Link></li>
         <li className='mr-2'><Link to='/blog'>Blog</Link></li>
