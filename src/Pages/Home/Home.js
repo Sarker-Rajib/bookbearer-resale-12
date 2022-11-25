@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import bannerImage from '../../Assets/Images/banner-image.png';
 import AdvertisedItems from './AdvertisedItems/AdvertisedItems';
 import HomeCategories from './Categories/HomeCategories';
+import ContactUs from './ContactUs/ContactUs';
 
 const Home = () => {
     const notify = () => toast.success('Here is your toast.');
@@ -14,6 +15,7 @@ const Home = () => {
 
             <HomeCategories></HomeCategories>
             <AdvertisedItems></AdvertisedItems>
+            <ContactUs></ContactUs>
         </div>
     );
 };
