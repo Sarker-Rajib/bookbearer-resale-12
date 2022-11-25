@@ -25,6 +25,33 @@ const AddProduct = () => {
             writtername
         } = data;
 
+        let categoryId = 101;
+
+        if (category === 'Romance') {
+            categoryId = categoryId + 1
+        }
+        if (category === 'Horror') {
+            categoryId = categoryId + 2
+        }
+        if (category === 'Thriller') {
+            categoryId = categoryId + 3
+        }
+        if (category === 'Historical') {
+            categoryId = categoryId + 4
+        }
+        if (category === 'Adventure stories') {
+            categoryId = categoryId + 5
+        }
+        if (category === 'Crime') {
+            categoryId = categoryId + 6
+        }
+        if (category === 'Fantasy') {
+            categoryId = categoryId + 7
+        }
+        if (category === 'Fairy tales') {
+            categoryId = categoryId + 8
+        }
+
         fetch(`https://api.imgbb.com/1/upload?key=${imgbbkey}`, {
             method: 'POST',
             body: formData
@@ -33,6 +60,7 @@ const AddProduct = () => {
             .then(imgData => {
                 const photoURL = imgData.data.display_url;
                 const bookDetails = {
+                    categoryId,
                     PurchaseTime,
                     bookname,
                     condition,
@@ -44,20 +72,20 @@ const AddProduct = () => {
                     category,
                     image: photoURL
                 }
-                
+                console.log(bookDetails);
                 fetch("http://localhost:5000/books", {
                     method: 'POST',
-                    headers:{
-                        'content-type': 'application/json',                        
+                    headers: {
+                        'content-type': 'application/json',
                     },
                     body: JSON.stringify(bookDetails)
                 })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.acknowledged) {
-                        toast.success('Book added successfully')
-                    }
-                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            toast.success('Book added successfully')
+                        }
+                    })
             })
     };
 
@@ -83,7 +111,7 @@ const AddProduct = () => {
                         <label>Condition</label>
                         <select className='input input-bordered w-full'
                             {...register("condition",
-                                { required: "Insert writter name" })} >
+                                { required: "Select Condition" })} >
                             <option value="Excellent">Excellent</option>
                             <option value="Good">Good</option>
                             <option value="Fair">Fair</option>
@@ -128,13 +156,13 @@ const AddProduct = () => {
                         <label>Mobile No</label>
                         <input className='input input-bordered w-full' {...register("mobile",
                             { required: "mobile needed" })} placeholder='Your mobile no' />
-                        {errors?.mobile && <span className='text-amber-600'>{errors?.location?.message}</span>}
+                        {errors?.mobile && <span className='text-amber-600'>{errors?.mobile?.message}</span>}
                     </div>
 
                     <div className='pb-2'>
-                        <label>Year of Purchase</label>
+                        <label>Date of Purchase</label>
                         <input className='input input-bordered w-full' {...register("PurchaseTime",
-                            { required: "Purchase date required" })} placeholder='Purchase Time' />
+                            { required: "Purchase date required" })} placeholder='dd/mm/yyyy' />
                         {errors?.PurchaseTime && <span className='text-amber-600'>{errors?.PurchaseTime?.message}</span>}
                     </div>
 
@@ -150,7 +178,7 @@ const AddProduct = () => {
                     <label>Description</label>
                     <input className='input input-bordered w-full' {...register("description",
                         { required: "description needed" })} placeholder='Description' />
-                    {errors?.description && <span className='text-amber-600'>{errors?.location?.message}</span>}
+                    {errors?.description && <span className='text-amber-600'>{errors?.description?.message}</span>}
 
                     <input type="submit" className='btn mt-4 w-full' value='Add product' />
                 </div>
