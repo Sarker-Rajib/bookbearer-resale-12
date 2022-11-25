@@ -6,8 +6,8 @@ const ContactUs = () => {
         <div className=" p-8 bg-amber-50 my-4 rounded-lg">
             <h1 className="text-5xl font-bold pb-4 text-center">Contact Us</h1>
             <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="addImage lg:p-8">
-                    <img src={map} alt="" />
+                <div className="addImage text-center lg:p-4">
+                    <img src={map} alt="map" />
                 </div>
                 <div className="py-8">
                     <p>Phone: +880 798 654 3546</p>
