@@ -5,7 +5,6 @@ import CategoryCard from './CategoryCard';
 const HomeCategories = () => {
     const [allCategories, setAllCategories] = useState([]);
 
-
     useEffect(() => {
         axios('http://localhost:5000/bookCategories')
             .then(data => {
