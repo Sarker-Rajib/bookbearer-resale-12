@@ -12,6 +12,7 @@ const AddProduct = () => {
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
+        const date = new Date();
 
         const {
             PurchaseTime,
@@ -70,7 +71,8 @@ const AddProduct = () => {
                     price,
                     writtername,
                     category,
-                    image: photoURL
+                    image: photoURL,
+                    date
                 }
                 console.log(bookDetails);
                 fetch("http://localhost:5000/books", {
