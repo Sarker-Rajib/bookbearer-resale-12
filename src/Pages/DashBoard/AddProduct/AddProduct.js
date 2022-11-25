@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../../Contexts/AuthContext/AuthProvider';
 
 const AddProduct = () => {
+    const { currentUser } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imgbbkey = process.env.REACT_APP_imgbb_key;
 
@@ -21,7 +23,8 @@ const AddProduct = () => {
             description,
             location,
             mobile,
-            price,
+            originalPrice,
+            reSalePrice,
             category,
             writtername
         } = data;
@@ -68,13 +71,15 @@ const AddProduct = () => {
                     description,
                     location,
                     mobile,
-                    price,
+                    originalPrice,
+                    reSalePrice,
                     writtername,
                     category,
                     image: photoURL,
-                    date
+                    date,
+                    seller: currentUser?.displayName
                 }
-                console.log(bookDetails);
+
                 fetch("http://localhost:5000/books", {
                     method: 'POST',
                     headers: {
@@ -141,10 +146,24 @@ const AddProduct = () => {
                     </div>
 
                     <div className='pb-2'>
-                        <label>Price</label>
-                        <input className='input input-bordered w-full' {...register("price",
-                            { required: "Price needed" })} placeholder='$' />
-                        {errors?.price && <span className='text-amber-600'>{errors?.price?.message}</span>}
+                        <label>Use Duration</label>
+                        <input className='input input-bordered w-full' {...register("useDuration",
+                            { required: "useDuration needed" })} placeholder='Duration of using product' />
+                        {errors?.useDuration && <span className='text-amber-600'>{errors?.useDuration?.message}</span>}
+                    </div>
+
+                    <div className='pb-2'>
+                        <label>Original Price</label>
+                        <input className='input input-bordered w-full' {...register("originalPrice",
+                            { required: "originalPrice needed" })} placeholder='taka' />
+                        {errors?.originalPrice && <span className='text-amber-600'>{errors?.originalPrice?.message}</span>}
+                    </div>
+
+                    <div className='pb-2'>
+                        <label>Resale Price</label>
+                        <input className='input input-bordered w-full' {...register("reSalePrice",
+                            { required: "reSalePrice needed" })} placeholder='taka' />
+                        {errors?.reSalePrice && <span className='text-amber-600'>{errors?.reSalePrice?.message}</span>}
                     </div>
 
                     <div className='pb-2'>
