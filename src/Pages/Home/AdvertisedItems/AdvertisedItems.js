@@ -1,14 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import AdvertisementCard from './AdvertisementCard';
+import React, { useEffect } from 'react';
 
 const AdvertisedItems = () => {
-    const [books, setbooks] = useState([]);
+    // const [books, setbooks] = useState([]);
 
     useEffect(() => {
         axios('http://localhost:5000/books')
             .then(data => {
-                setbooks(data.data);
+               
             })
     }, [])
 

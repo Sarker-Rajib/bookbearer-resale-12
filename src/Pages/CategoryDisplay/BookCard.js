@@ -48,7 +48,6 @@ const BookCard = ({ book }) => {
                         bookinData={bookinData}
                         setBookingData={setBookingData}
                     ></BookingModal>
-
                 }
 
             </>
