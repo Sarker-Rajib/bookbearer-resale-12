@@ -8,6 +8,7 @@ import NotFound from "../Pages/Error/NotFound";
 import Home from "../Pages/Home/Home";
 import LogIn from "../Pages/LogIn/LogIn";
 import Register from "../Pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,10 @@ export const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/books?categoryId=${params.id}`),
-                element: <CategoryDisplay></CategoryDisplay>
+                element:
+                    <PrivateRoute>
+                        <CategoryDisplay></CategoryDisplay>
+                    </PrivateRoute>
             },
             {
                 path: '/register',

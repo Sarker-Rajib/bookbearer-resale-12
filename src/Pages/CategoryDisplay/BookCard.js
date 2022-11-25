@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import BookingModal from './BookingModal';
 
 const BookCard = ({ book }) => {
+    const [bookinData, setBookingData] = useState(null);
+
     const {
         PurchaseTime,
         bookname,
@@ -35,7 +38,20 @@ const BookCard = ({ book }) => {
             <p>Location : {location}</p>
             <p>Seller Name : {seller}</p>
             <p className='pb-2'>Contact : {mobile}</p>
-            <button className='btn'>Book Now</button>
+            <label onClick={() => setBookingData(book)} htmlFor="bookingModal" className="btn">Book Now</label>
+
+            <>
+                {/* booking modal */}
+
+                {
+                    bookinData && <BookingModal
+                        bookinData={bookinData}
+                        setBookingData={setBookingData}
+                    ></BookingModal>
+
+                }
+
+            </>
         </div>
     );
 };

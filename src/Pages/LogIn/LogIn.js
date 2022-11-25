@@ -16,7 +16,6 @@ const LogIn = () => {
     const handleUserLogin = (data) => {
         const email = data.email;
         const password = data.password;
-        console.log(email, password);
 
         logIn(email, password)
             .then(data => {
@@ -34,7 +33,7 @@ const LogIn = () => {
     const handleGoogleSignin = () => {
         providerLogin(googleProvider)
         .then(data => {
-            
+
             navigate(from, { replace: true });
 
             const user = {
@@ -67,7 +66,7 @@ const LogIn = () => {
 
                     <div className='pb-4'>
                         <label>Email</label>
-                        <input className='w-full p-2 rounded-md border focus:border-indigo-500 focus:ring-indigo-500'
+                        <input className='w-full p-2 rounded-md border focus:border-indigo-500'
                             placeholder='Your email address'
                             {...register("email",
                                 { required: "Email Required" })} />
@@ -76,14 +75,12 @@ const LogIn = () => {
 
                     <div className='pb-4'>
                         <label>Password</label>
-                        <input className='w-full p-2 rounded-md border focus:border-indigo-500 focus:ring-indigo-500'
+                        <input type='password' className='w-full p-2 rounded-md border focus:border-indigo-500'
                             placeholder='Password'
                             {...register("password",
                                 { required: 'Password Required' })} />
                         {errors.password && <span className='text-red-400'>{errors.password?.message}</span>}
                     </div>
-
-
 
                     <input type="submit" className='btn w-full' />
                 </form>
