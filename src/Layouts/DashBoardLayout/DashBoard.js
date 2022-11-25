@@ -7,7 +7,10 @@ const DashBoard = () => {
 
 
     const menu = <>
-        <li><Link to='/dashboard/addproduct'>Add Product</Link></li>
+        <li className='my-2'><Link className='text-xl' to='/dashboard/addproduct'>Add Product</Link></li>
+        <li className='my-2'><Link className='text-xl' to='/dashboard/myproduct'>My Product</Link></li>
+        <li className='my-2'><Link className='text-xl' to='/dashboard/allseller'>All Seller</Link></li>
+
     </>
 
     return (

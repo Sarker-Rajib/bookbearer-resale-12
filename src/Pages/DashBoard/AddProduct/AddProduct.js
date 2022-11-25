@@ -1,12 +1,64 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const imgbbkey = process.env.REACT_APP_imgbb_key;
 
-    
+
     const handleProductAdding = data => {
-        console.log(data)
+
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+
+        const {
+            PurchaseTime,
+            bookname,
+            condition,
+            description,
+            location,
+            mobile,
+            price,
+            category,
+            writtername
+        } = data;
+
+        fetch(`https://api.imgbb.com/1/upload?key=${imgbbkey}`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                const photoURL = imgData.data.display_url;
+                const bookDetails = {
+                    PurchaseTime,
+                    bookname,
+                    condition,
+                    description,
+                    location,
+                    mobile,
+                    price,
+                    writtername,
+                    category,
+                    image: photoURL
+                }
+                
+                fetch("http://localhost:5000/books", {
+                    method: 'POST',
+                    headers:{
+                        'content-type': 'application/json',                        
+                    },
+                    body: JSON.stringify(bookDetails)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        toast.success('Book added successfully')
+                    }
+                })
+            })
     };
 
     return (
@@ -41,6 +93,24 @@ const AddProduct = () => {
                     </div>
 
                     <div className='pb-2'>
+                        <label>Category</label>
+                        <select className='input input-bordered w-full'
+                            {...register("category",
+                                { required: "select category" })} >
+                            <option value="Romance">Romance</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Historical">Historical</option>
+                            <option value="Adventure stories">Adventure stories</option>
+                            <option value="Crime">Crime</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Fairy tales">Fairy tales</option>
+                        </select>
+
+                        {errors?.condition && <span className='text-amber-600'>{errors?.condition?.message}</span>}
+                    </div>
+
+                    <div className='pb-2'>
                         <label>Price</label>
                         <input className='input input-bordered w-full' {...register("price",
                             { required: "Price needed" })} placeholder='$' />
@@ -64,8 +134,15 @@ const AddProduct = () => {
                     <div className='pb-2'>
                         <label>Year of Purchase</label>
                         <input className='input input-bordered w-full' {...register("PurchaseTime",
-                            { required: "Purchase Time required" })} placeholder='Purchase Time' />
+                            { required: "Purchase date required" })} placeholder='Purchase Time' />
                         {errors?.PurchaseTime && <span className='text-amber-600'>{errors?.PurchaseTime?.message}</span>}
+                    </div>
+
+                    <div className='pb-2'>
+                        <label>Image</label>
+                        <input type='file' className='input input-bordered w-full' {...register("image",
+                            { required: "Image required" })} placeholder='Purchase Time' />
+                        {errors?.image && <span className='text-amber-600'>{errors?.image?.message}</span>}
                     </div>
                 </div>
 
@@ -74,9 +151,10 @@ const AddProduct = () => {
                     <input className='input input-bordered w-full' {...register("description",
                         { required: "description needed" })} placeholder='Description' />
                     {errors?.description && <span className='text-amber-600'>{errors?.location?.message}</span>}
+
+                    <input type="submit" className='btn mt-4 w-full' value='Add product' />
                 </div>
 
-                <input type="submit" />
             </form>
         </div>
     );

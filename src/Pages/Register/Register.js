@@ -8,7 +8,7 @@ import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const imgbbkey = process.env.REACT_APP_imgbb_key
+    const imgbbkey = process.env.REACT_APP_imgbb_key;
 
 
     const handleUserRegistration = (data) => {
