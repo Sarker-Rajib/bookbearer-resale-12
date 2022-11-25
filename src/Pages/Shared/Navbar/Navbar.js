@@ -28,7 +28,7 @@ const Navbar = () => {
     </>
 
     return (
-        <nav className='mt-4'>
+        <nav className='p-3' style={{background: "#efdbb4"}}>
             <div className="flex justify-between items-center">
                 <img className='max-w-[200px]' src={brandImage} alt="brand-icon" />
 

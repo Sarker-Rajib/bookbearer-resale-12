@@ -77,7 +77,8 @@ const AddProduct = () => {
                     category,
                     image: photoURL,
                     date,
-                    seller: currentUser?.displayName
+                    seller: currentUser?.displayName,
+                    email: currentUser?.email
                 }
 
                 fetch("http://localhost:5000/books", {

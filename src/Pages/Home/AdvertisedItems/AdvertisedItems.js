@@ -13,8 +13,8 @@ const AdvertisedItems = () => {
     }, [])
 
     return (
-        <div className='mt-6'>
-            <h2 className='text-3xl'>Advertised Books</h2>
+        <div className='pt-16'>
+            <h2 className='text-2xl lg:text-5xl font-bold text-center pb-2'>Advertised Books</h2>
             <div className="grid gap-4 lg:grid-cols-2 grid-cols-1">
                 {/* {
                     books.map((book, i) => <AdvertisementCard

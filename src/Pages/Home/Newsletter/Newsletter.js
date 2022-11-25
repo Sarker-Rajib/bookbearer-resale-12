@@ -2,7 +2,7 @@ import React from 'react';
 
 const Newsletter = () => {
     return (
-        <div className=" p-8 bg-pink-50 my-4 rounded-lg">
+        <div className="p-8 my-4 rounded-lg" style={{background: "#efdbb4"}}>
             <h1 className="text-5xl font-bold pb-4 text-center">Newsletter</h1>
             <p className='text-center'>Great to see you ! We value your demand. If you are looking for old and gold things you can subscribe. We will send notifications for new uploaded products.</p>
             <div className="py-8">

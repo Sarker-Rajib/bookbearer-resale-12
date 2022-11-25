@@ -3,7 +3,7 @@ import map from '../../../Assets/Images/map.png';
 
 const ContactUs = () => {
     return (
-        <div className=" p-8 bg-amber-50 my-4 rounded-lg">
+        <div className=" p-8  my-4 rounded-lg" style={{background: "#efdbb4"}}>
             <h1 className="text-5xl font-bold pb-4 text-center">Contact Us</h1>
             <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="addImage text-center lg:p-4">
