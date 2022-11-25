@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -5,7 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 
 const LogIn = () => {
-    const { logIn } = useContext(AuthContext)
+    const { logIn, providerLogin } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const location = useLocation();
     const navigate = useNavigate();
@@ -26,6 +27,36 @@ const LogIn = () => {
             }
             )
             .catch(err => console.error(err))
+    };
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleSignin = () => {
+        providerLogin(googleProvider)
+        .then(data => {
+            
+            navigate(from, { replace: true });
+
+            const user = {
+                email: data.user.email,
+                uid: data.user.uid,
+                role: 'Buyer'
+            }
+
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(user)
+            })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+            })
+
+            toast.success('Login successful');
+        })
     };
 
     return (
@@ -54,9 +85,12 @@ const LogIn = () => {
 
 
 
-                    <input type="submit" className='btn w-full py-2 bg-slate-200 rounded' />
+                    <input type="submit" className='btn w-full' />
                 </form>
                 <p className='pt-4'>New in this site ? <Link className='text-green-500' to='/register'>Please Register</Link></p>
+                <div className='pt-6'>
+                    <button onClick={handleGoogleSignin} className='btn w-full'>Login With Google</button>
+                </div>
             </div>
         </div>
     );

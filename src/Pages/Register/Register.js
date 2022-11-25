@@ -1,14 +1,18 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 // import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 
 const Register = () => {
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, providerLogin } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imgbbkey = process.env.REACT_APP_imgbb_key;
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
 
     const handleUserRegistration = (data) => {
@@ -40,6 +44,36 @@ const Register = () => {
                     })
             })
             .catch(error => console.error(error))
+    };
+
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSignin = () => {
+        providerLogin(googleProvider)
+            .then(data => {
+                
+                navigate(from, { replace: true });
+
+                const user = {
+                    email: data.user.email,
+                    uid: data.user.uid,
+                    role: 'Buyer'
+                }
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(user)
+                })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result);
+                })
+
+                toast.success('Login successful');
+            })
+            .catch(err => console.error(err));
     };
 
 
@@ -84,7 +118,10 @@ const Register = () => {
                         {errors.password && <span className='text-red-400'>{errors.password?.message}</span>}
                     </div>
 
-                    <input type="submit" className='btn w-full py-2 bg-slate-200 rounded' />
+                    <input type="submit" className='btn w-full' />
+                    <div className='pt-6'>
+                        <button onClick={handleGoogleSignin} className='btn w-full'>Login With Google</button>
+                    </div>
                 </form>
 
                 <p className='pt-4'>Have an Account ? <Link className='text-green-500' to='/login'>Please LogIn</Link></p>
