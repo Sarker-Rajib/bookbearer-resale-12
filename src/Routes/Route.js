@@ -12,6 +12,7 @@ import LogIn from "../Pages/LogIn/LogIn";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import MyProducts from "../Pages/MyProducts/MyProducts";
 import Register from "../Pages/Register/Register";
+import ReportedItems from "../Pages/ReportedItems/ReportedItems";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
                 path: '/dashboard/allbuyer',
                 element: <AllBuyer></AllBuyer>
             },
+            {
+                path: '/dashboard/reporteditems',
+                element: <ReportedItems></ReportedItems>
+            }
         ]
     },
     {

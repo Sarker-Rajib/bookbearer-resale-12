@@ -13,25 +13,26 @@ const DashBoard = () => {
     const [isSeller] = useSeller(currentUser?.email);
     const [isBuyer] = useBuyer(currentUser?.email);
 
-    console.log('buyer' + isBuyer);
+    // console.log('buyer' + isBuyer);
     // console.log('Seller' + isSeller);
     // console.log('admin' + isAdmin);
 
     const menu = <>
         {
             isAdmin && <>
-                <li className='my-2'><Link className='btn text-white w-full text-xl' to='/dashboard/allseller'>All Sellers</Link></li>
-                <li className='my-2'><Link className='btn text-white w-full text-xl' to='/dashboard/allbuyer'>All Buyers</Link></li>
+                <li className='my-2'><Link className='btn text-white w-full text-lg' to='/dashboard/allseller'>All Sellers</Link></li>
+                <li className='my-2'><Link className='btn text-white w-full text-lg' to='/dashboard/allbuyer'>All Buyers</Link></li>
+                <li className='my-2'><Link className='btn text-white w-full text-lg' to='/dashboard/reporteditems'>Reported Items</Link></li>
             </>
         }
         {
             isSeller && <>
-                <li className='my-2'><Link className='btn text-white w-full text-xl' to='/dashboard/addproduct'>Add a Product</Link></li>
-                <li className='my-2'><Link className='btn text-white w-full text-xl' to='/dashboard/myproduct'>My Products</Link></li>
+                <li className='my-2'><Link className='btn text-white w-full text-lg' to='/dashboard/addproduct'>Add a Product</Link></li>
+                <li className='my-2'><Link className='btn text-white w-full text-lg' to='/dashboard/myproduct'>My Products</Link></li>
             </>
         }
         {
-            isBuyer && <li className='my-2'><Link className='btn text-white w-full text-xl' to='/dashboard/myorders'>My Orders</Link></li>
+            isBuyer && <li className='my-2'><Link className='btn text-white w-full text-lg' to='/dashboard/myorders'>My Orders</Link></li>
         }
     </>
 
