@@ -101,7 +101,7 @@ const AddProduct = () => {
     };
 
     return (
-        <div className='bg-red-100'>
+        <div className='bg-yellow-700 bg-opacity-30 rounded'>
             <form onSubmit={handleSubmit(handleProductAdding)}>
                 <div className='grid gap-3 grid-cols-1 lg:grid-cols-2 p-4'>
                     <div className='pb-2'>

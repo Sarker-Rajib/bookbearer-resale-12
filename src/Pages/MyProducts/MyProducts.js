@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext } from 'react';
+import Loader from '../../Component/Loader/Loader';
 import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 import MyProductCard from './MyProductCard';
 
@@ -19,7 +20,7 @@ const MyProducts = () => {
     })
 
     if (isLoading) {
-        return <div>Loading</div>
+        return <Loader></Loader>
     }
 
     return (
