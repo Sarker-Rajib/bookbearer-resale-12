@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
+import useSeller from '../../Hooks/useSeller';
 import Footer from '../../Pages/Shared/Footer/Footer';
 import Navbar from '../../Pages/Shared/Navbar/Navbar';
 
 const DashBoard = () => {
     const { currentUser } = useContext(AuthContext)
     const [isAdmin] = useAdmin(currentUser?.email);
+    const [isSeller] = useSeller(currentUser?.email)
 
 
 
@@ -18,8 +20,15 @@ const DashBoard = () => {
                 <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/addproduct'>All Buyers</Link></li>
             </>
         }
-        <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/addproduct'>Add Product</Link></li>
-        <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/myproduct'>My Product</Link></li>
+        {
+            isSeller && <>
+                <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/addproduct'>Add Product</Link></li>
+                <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/myproduct'>My Product</Link></li>
+            </>
+        }
+        {
+            
+        }
         <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/allseller'>All Seller</Link></li>
 
     </>
