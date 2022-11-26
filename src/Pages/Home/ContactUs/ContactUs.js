@@ -7,7 +7,7 @@ const ContactUs = () => {
             <h1 className="text-5xl font-bold pb-4 text-center">Contact Us</h1>
             <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="addImage text-center lg:p-4">
-                    <img src={map} alt="map" />
+                    <img className='w-full' src={map} alt="map" />
                 </div>
                 <div className="py-8">
                     <p>Phone: +880 798 654 3546</p>

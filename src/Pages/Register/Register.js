@@ -23,9 +23,30 @@ const Register = () => {
         const email = data.email;
         const password = data.password;
         const name = data.name;
+        const role = data.role;
+
+        console.log(email, password, name, role);
 
         createUser(email, password)
             .then(data => {
+                const user = {
+                    email: data.user.email,
+                    uid: data.user.uid,
+                    role: role
+                }
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result);
+                    })
+
                 fetch(`https://api.imgbb.com/1/upload?key=${imgbbkey}`, {
                     method: 'POST',
                     body: formData
@@ -39,6 +60,7 @@ const Register = () => {
                         }
                         updateUser(profile)
                             .then(() => {
+                                navigate(from, { replace: true });
                                 toast.success('User Created Successful')
                             })
                     })
@@ -50,26 +72,26 @@ const Register = () => {
     const handleGoogleSignin = () => {
         providerLogin(googleProvider)
             .then(data => {
-                
+
                 navigate(from, { replace: true });
 
                 const user = {
                     email: data.user.email,
                     uid: data.user.uid,
-                    role: 'Buyer'
+                    role: 'buyer'
                 }
 
-                fetch('http://localhost:5000/users', {
-                    method: 'POST',
+                fetch(`http://localhost:5000/users?email${data.user.email}`, {
+                    method: 'PUT',
                     headers: {
                         "content-type": "application/json",
                     },
                     body: JSON.stringify(user)
                 })
-                .then(res => res.json())
-                .then(result => {
-                    console.log(result);
-                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result);
+                    })
 
                 toast.success('Login successful');
             })
@@ -111,11 +133,23 @@ const Register = () => {
 
                     <div className='pb-4'>
                         <label>Password</label>
-                        <input className='w-full p-2 rounded-md border focus:border-indigo-500 focus:ring-indigo-500'
+                        <input type='password' className='w-full p-2 rounded-md border focus:border-indigo-500 focus:ring-indigo-500'
                             placeholder='Password'
                             {...register("password",
                                 { required: 'Password Required' })} />
                         {errors.password && <span className='text-red-400'>{errors.password?.message}</span>}
+                    </div>
+
+                    <div className='pb-2'>
+                        <label>Want to be a seller? <br /> (select Seller from option below)</label>
+                        <select className='input input-bordered w-full'
+                            {...register("role",
+                                { required: "Select Condition" })} >
+                            <option value="buyer">Buyer</option>
+                            <option value="seller">Seller</option>
+                        </select>
+
+                        {errors?.condition && <span className='text-amber-600'>{errors?.condition?.message}</span>}
                     </div>
 
                     <input type="submit" className='btn w-full' />

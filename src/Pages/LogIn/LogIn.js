@@ -39,11 +39,11 @@ const LogIn = () => {
             const user = {
                 email: data.user.email,
                 uid: data.user.uid,
-                role: 'Buyer'
+                role: 'buyer'
             }
 
-            fetch('http://localhost:5000/users', {
-                method: 'POST',
+            fetch(`http://localhost:5000/users?email${data.user.email}`, {
+                method: 'PUT',
                 headers: {
                     "content-type": "application/json",
                 },
