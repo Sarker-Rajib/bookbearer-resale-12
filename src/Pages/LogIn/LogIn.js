@@ -39,6 +39,8 @@ const LogIn = () => {
             const user = {
                 email: data.user.email,
                 uid: data.user.uid,
+                name: data.user.displayName,
+                image: data.user.photoURL,
                 role: 'buyer'
             }
  

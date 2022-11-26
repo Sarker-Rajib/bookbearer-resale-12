@@ -78,6 +78,8 @@ const Register = () => {
                 const user = {
                     email: data.user.email,
                     uid: data.user.uid,
+                    name: data.user.displayName,
+                    image: data.user.photoURL,
                     role: 'buyer'
                 }
 
@@ -153,10 +155,10 @@ const Register = () => {
                     </div>
 
                     <input type="submit" className='btn w-full' />
-                    <div className='pt-6'>
-                        <button onClick={handleGoogleSignin} className='btn w-full'>Login With Google</button>
-                    </div>
                 </form>
+                <div className='pt-6'>
+                    <button onClick={handleGoogleSignin} className='btn w-full'>Login With Google</button>
+                </div>
 
                 <p className='pt-4'>Have an Account ? <Link className='text-green-500' to='/login'>Please LogIn</Link></p>
             </div>

@@ -27,7 +27,7 @@ const Navbar = () => {
                 <>
                     {
                         isAdmin &&
-                        <li className='mr-2'><Link to='/dashboard'>DashBoard</Link></li>
+                        <li className='mr-2'><Link to='/dashboard/allseller'>DashBoard</Link></li>
                     }
                     {
                         isSeller &&
