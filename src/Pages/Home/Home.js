@@ -13,8 +13,8 @@ const Home = () => {
 
             <HomeCategories></HomeCategories>
             <AdvertisedItems></AdvertisedItems>
-            <Newsletter></Newsletter>
             <ContactUs></ContactUs>
+            <Newsletter></Newsletter>
         </div>
     );
 };

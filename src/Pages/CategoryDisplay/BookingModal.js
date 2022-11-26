@@ -5,7 +5,9 @@ import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 
 const BookingModal = ({ bookinData, setBookingData }) => {
     const { currentUser } = useContext(AuthContext);
-    const { bookname, reSalePrice } = bookinData;
+    const { bookname, reSalePrice, image } = bookinData;
+
+    // console.log(bookinData);
 
     const handleBooking = event => {
         event.preventDefault();
@@ -20,7 +22,8 @@ const BookingModal = ({ bookinData, setBookingData }) => {
             email: currentUser?.email,
             date,
             bookname,
-            reSalePrice
+            reSalePrice,
+            image
         })
             .then(result => {
                 // console.log(result);

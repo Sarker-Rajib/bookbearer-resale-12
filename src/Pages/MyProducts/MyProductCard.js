@@ -9,10 +9,27 @@ const MyProductCard = ({ book }) => {
         writtername,
         category,
         image,
-        date } = book;
+        date,
+        _id } = book;
+
+    const handleAdvertiseBook = (id) => {
+        const advertise = {
+            advertise: "true"
+        };
+
+        fetch(`http://localhost:5000/books/advertise/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(advertise)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+    };
 
     return (
-        <div className='p-2 m-2 bg-zinc-200'>
+        <div className='p-2 m-2 bg-zinc-200 rounded'>
             <div className='flex flex-col lg:flex-row'>
                 <div className='max-w-[200px]'>
                     <img className='rounded-lg' src={image} alt="bookimage" />
@@ -32,7 +49,7 @@ const MyProductCard = ({ book }) => {
                             <p>Posted {date ? date.slice(0, 10) : 'n/a'} at {date ? date.slice(11, 16) : 'n/a'}</p>
                             <p>Purchase date: {PurchaseTime}</p>
                             <p>Re-sale Price : {reSalePrice} Taka</p>
-                            <button className='btn'>Add to Advertise</button>
+                            <button onClick={() => handleAdvertiseBook(_id)} className='btn'>Add to Advertise</button>
                             <button className='btn m-2'>Delete</button>
                         </div>
                     </div>

@@ -101,9 +101,10 @@ const AddProduct = () => {
     };
 
     return (
-        <div className='bg-yellow-700 bg-opacity-30 rounded'>
+        <div className='bg-yellow-700 bg-opacity-30 rounded p-2'>
+            <h2 className='p-2 font-bold text-lg'>Add a Product</h2>
             <form onSubmit={handleSubmit(handleProductAdding)}>
-                <div className='grid gap-3 grid-cols-1 lg:grid-cols-2 p-4'>
+                <div className='grid gap-3 grid-cols-1 lg:grid-cols-2 p-2'>
                     <div className='pb-2'>
                         <label>Book Name</label>
                         <input className='input input-bordered w-full' {...register("bookname",
