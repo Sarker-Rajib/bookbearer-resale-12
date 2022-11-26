@@ -3,9 +3,16 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import brandImage from '../../../Assets/Images/brand-logo.png';
 import { AuthContext } from '../../../Contexts/AuthContext/AuthProvider';
+import useAdmin from '../../../Hooks/useAdmin';
+import useBuyer from '../../../Hooks/useBuyer';
+import useSeller from '../../../Hooks/useSeller';
 
 const Navbar = () => {
     const { currentUser, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(currentUser?.email);
+    const [isSeller] = useSeller(currentUser?.email);
+    const [isBuyer] = useBuyer(currentUser?.email);
+
 
     const handleLogOut = () => {
         logOut();
@@ -18,7 +25,18 @@ const Navbar = () => {
         {
             currentUser?.email ?
                 <>
-                    <li className='mr-2'><Link to='/dashboard'>DashBoard</Link></li>
+                    {
+                        isAdmin &&
+                        <li className='mr-2'><Link to='/dashboard'>DashBoard</Link></li>
+                    }
+                    {
+                        isSeller &&
+                        <li className='mr-2'><Link to='/dashboard'>DashBoard</Link></li>
+                    }
+                    {
+                        isBuyer &&
+                        <li className='mr-2'><Link to='/dashboard/myorders'>DashBoard</Link></li>
+                    }
                     <li className='mr-2'><Link onClick={handleLogOut}>LogOut</Link></li>
                     <li><img className='h-12 w-12 rounded-full' src={currentUser?.photoURL} alt="" /></li>
                 </>
@@ -28,7 +46,7 @@ const Navbar = () => {
     </>
 
     return (
-        <nav className='p-3' style={{background: "#efdbb4"}}>
+        <nav className='p-3' style={{ background: "#efdbb4" }}>
             <div className="flex justify-between items-center">
                 <img className='max-w-[200px]' src={brandImage} alt="brand-icon" />
 

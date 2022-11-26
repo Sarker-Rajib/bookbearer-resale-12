@@ -1,12 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashBoard from "../Layouts/DashBoardLayout/DashBoard";
 import Main from "../Layouts/Main/Main";
+import AllBuyer from "../Pages/AllBuyer/AllBuyer";
+import AllSeller from "../Pages/Allseller/AllSeller";
 import Blog from "../Pages/Blog/Blog";
 import CategoryDisplay from "../Pages/CategoryDisplay/CategoryDisplay";
 import AddProduct from "../Pages/DashBoard/AddProduct/AddProduct";
 import NotFound from "../Pages/Error/NotFound";
 import Home from "../Pages/Home/Home";
 import LogIn from "../Pages/LogIn/LogIn";
+import MyOrders from "../Pages/MyOrders/MyOrders";
 import MyProducts from "../Pages/MyProducts/MyProducts";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
@@ -53,6 +56,18 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/myproduct',
                 element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/dashboard/myorders',
+                element: <MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/allseller',
+                element: <AllSeller></AllSeller>
+            },
+            {
+                path: '/dashboard/allbuyer',
+                element: <AllBuyer></AllBuyer>
             },
         ]
     },

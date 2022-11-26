@@ -2,22 +2,22 @@ import { useEffect, useState } from 'react';
 
 const useSeller = (email) => {
     const [isSeller, setIsSeller] = useState(false);
-    const [adminLoading, setAdminLoading] = useState(true);
+    const [sellerLoading, setSellerLoading] = useState(true);
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/admins/${email}`)
+            fetch(`http://localhost:5000/users/sellers/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    setIsSeller(data.isAdmin)
-                    setAdminLoading(false)
+                    setIsSeller(data.isSeller)
+                    setSellerLoading(false)
                     // console.log(data);
                 })
         }
 
     }, [email]);
 
-    return [isSeller, adminLoading];
+    return [isSeller, sellerLoading];
 };
 
 export default useSeller;

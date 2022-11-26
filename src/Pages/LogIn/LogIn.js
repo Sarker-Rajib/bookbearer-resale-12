@@ -41,7 +41,7 @@ const LogIn = () => {
                 uid: data.user.uid,
                 role: 'buyer'
             }
-
+ 
             fetch(`http://localhost:5000/users?email${data.user.email}`, {
                 method: 'PUT',
                 headers: {

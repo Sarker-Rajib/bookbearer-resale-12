@@ -5,8 +5,6 @@ import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 import MyProductCard from './MyProductCard';
 
 
-
-
 const MyProducts = () => {
     const { currentUser } = useContext(AuthContext);
 

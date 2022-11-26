@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
+import useBuyer from '../../Hooks/useBuyer';
 import useSeller from '../../Hooks/useSeller';
 import Footer from '../../Pages/Shared/Footer/Footer';
 import Navbar from '../../Pages/Shared/Navbar/Navbar';
@@ -9,35 +10,36 @@ import Navbar from '../../Pages/Shared/Navbar/Navbar';
 const DashBoard = () => {
     const { currentUser } = useContext(AuthContext)
     const [isAdmin] = useAdmin(currentUser?.email);
-    const [isSeller] = useSeller(currentUser?.email)
+    const [isSeller] = useSeller(currentUser?.email);
+    const [isBuyer] = useBuyer(currentUser?.email);
 
-
+    console.log('buyer' + isBuyer);
+    // console.log('Seller' + isSeller);
+    // console.log('admin' + isAdmin);
 
     const menu = <>
         {
             isAdmin && <>
-                <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/addproduct'>All Sellers</Link></li>
-                <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/addproduct'>All Buyers</Link></li>
+                <li className='my-2'><Link className='btn text-white w-full text-xl' to='/dashboard/allseller'>All Sellers</Link></li>
+                <li className='my-2'><Link className='btn text-white w-full text-xl' to='/dashboard/allbuyer'>All Buyers</Link></li>
             </>
         }
         {
             isSeller && <>
-                <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/addproduct'>Add Product</Link></li>
-                <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/myproduct'>My Product</Link></li>
+                <li className='my-2'><Link className='btn text-white w-full text-xl' to='/dashboard/addproduct'>Add a Product</Link></li>
+                <li className='my-2'><Link className='btn text-white w-full text-xl' to='/dashboard/myproduct'>My Products</Link></li>
             </>
         }
         {
-            
+            isBuyer && <li className='my-2'><Link className='btn text-white w-full text-xl' to='/dashboard/myorders'>My Orders</Link></li>
         }
-        <li className='my-2'><Link className='text-blue-600 text-xl' to='/dashboard/allseller'>All Seller</Link></li>
-
     </>
 
     return (
         <>
             <Navbar></Navbar>
             <div className='pt-6'>
-                <label htmlFor="my-drawer-4" className="drawer-button lg:hidden btn btn-primary">Open Dahboard Menu</label>
+                <label htmlFor="my-drawer-4" className="mb-4 drawer-button lg:hidden btn">Open Dahboard Menu</label>
                 <div className="drawer h-auto drawer-end">
                     <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content flex">
