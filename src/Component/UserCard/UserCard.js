@@ -1,8 +1,11 @@
 import React from 'react';
 
 const UserCard = ({ user }) => {
-    const { name, email, image } = user;
+    const { name, email, image, _id } = user;
 
+    const handleDeleteUser = (id) => {
+        console.log(id);
+    };
 
     return (
         <tr>
@@ -16,7 +19,7 @@ const UserCard = ({ user }) => {
                 {email}
             </td>
             <th>
-                <button className="btn">Delete</button>
+                <button onClick={() => handleDeleteUser(_id)} className="btn">Delete</button>
             </th>
         </tr>
     );

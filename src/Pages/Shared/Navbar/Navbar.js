@@ -31,7 +31,7 @@ const Navbar = () => {
                     }
                     {
                         isSeller &&
-                        <li className='mr-2'><Link to='/dashboard'>DashBoard</Link></li>
+                        <li className='mr-2'><Link to='/dashboard/addproduct'>DashBoard</Link></li>
                     }
                     {
                         isBuyer &&

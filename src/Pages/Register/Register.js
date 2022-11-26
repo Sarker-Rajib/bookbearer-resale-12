@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
@@ -22,30 +23,15 @@ const Register = () => {
 
         const email = data.email;
         const password = data.password;
-        const name = data.name;
+        const userName = data.name;
         const role = data.role;
-
-        console.log(email, password, name, role);
 
         createUser(email, password)
             .then(data => {
-                const user = {
-                    email: data.user.email,
-                    uid: data.user.uid,
-                    role: role
-                }
 
-                fetch('http://localhost:5000/users', {
-                    method: 'POST',
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(user)
-                })
-                    .then(res => res.json())
-                    .then(result => {
-                        console.log(result);
-                    })
+                const email = data.user.email;
+                const uid = data.user.uid;
+                const name = data.user.displayName;
 
                 fetch(`https://api.imgbb.com/1/upload?key=${imgbbkey}`, {
                     method: 'POST',
@@ -62,6 +48,18 @@ const Register = () => {
                             .then(() => {
                                 navigate(from, { replace: true });
                                 toast.success('User Created Successful')
+                            })
+
+
+                        axios.post('http://localhost:5000/users', {
+                            email,
+                            uid,
+                            name: userName,
+                            image: photoURL,
+                            role
+                        })
+                            .then(result => {
+                                console.log(result);
                             })
                     })
             })

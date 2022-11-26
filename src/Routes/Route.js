@@ -13,6 +13,7 @@ import MyOrders from "../Pages/MyOrders/MyOrders";
 import MyProducts from "../Pages/MyProducts/MyProducts";
 import Register from "../Pages/Register/Register";
 import ReportedItems from "../Pages/ReportedItems/ReportedItems";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -64,15 +65,24 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allseller',
-                element: <AllSeller></AllSeller>
+                element:
+                    <AdminRoute>
+                        <AllSeller></AllSeller>
+                    </AdminRoute>
             },
             {
                 path: '/dashboard/allbuyer',
-                element: <AllBuyer></AllBuyer>
+                element:
+                    <AdminRoute>
+                        <AllBuyer></AllBuyer>
+                    </AdminRoute>
             },
             {
                 path: '/dashboard/reporteditems',
-                element: <ReportedItems></ReportedItems>
+                element:
+                    <AdminRoute>
+                        <ReportedItems></ReportedItems>
+                    </AdminRoute>
             }
         ]
     },

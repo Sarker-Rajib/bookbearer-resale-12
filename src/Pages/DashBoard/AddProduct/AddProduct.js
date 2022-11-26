@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthContext/AuthProvider';
 
 const AddProduct = () => {
     const { currentUser } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imgbbkey = process.env.REACT_APP_imgbb_key;
-    const location = useLocation();
     const navigate = useNavigate();
 
 

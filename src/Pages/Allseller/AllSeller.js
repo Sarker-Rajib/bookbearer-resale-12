@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
+import Loader from '../../Component/Loader/Loader';
 import UserCard from '../../Component/UserCard/UserCard';
 
 const Allseller = () => {
@@ -14,6 +15,9 @@ const Allseller = () => {
         },
     })
 
+    if (isLoading) {
+        return <Loader></Loader>
+    }
 
     return (
         <div className='p-2'>

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
+import Loader from '../../Component/Loader/Loader';
 import UserCard from '../../Component/UserCard/UserCard';
 
 const AllBuyer = () => {
@@ -14,6 +15,10 @@ const AllBuyer = () => {
             return data;
         },
     })
+
+    if (isLoading) {
+        return <Loader></Loader>
+    }
 
     return (
         <div className="overflow-x-auto w-full">
