@@ -43,7 +43,7 @@ const AdvertisementCard = ({ book }) => {
 
             <h2 className='flex items-center p-2'>Seller : {sellerData[0]?.name}
                 {
-                    sellerData[0]?.verified === true && <img className='h-4 w-4 ml-2' src={tickImage} alt='tick' />
+                    sellerData[0]?.verified === true ? <span className='flex items-center ml-2 text-green-600'>Verified<img className='h-4 w-4 ml-2' src={tickImage} alt='tick' /></span> : <span className='ml-2 text-yellow-600'>Not Verified</span>
                 }
             </h2>
             <button className="btn btn-primary">Book Now</button>

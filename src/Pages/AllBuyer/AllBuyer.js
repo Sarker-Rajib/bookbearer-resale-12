@@ -21,9 +21,9 @@ const AllBuyer = () => {
     }
 
     return (
-        <div className="overflow-x-auto w-full">
+        <div className="overflow-x-auto w-full p-2">
             <h2 className='p-2 font-bold text-lg'>All Buyers</h2>
-            <hr />
+            <hr className='mb-2'/>
             <table className="table table-zebra w-full">
 
                 <thead>

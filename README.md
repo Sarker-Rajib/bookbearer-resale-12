@@ -1,6 +1,8 @@
 ### Project Details
 #### Name: BookBearer (Book resale online market)
 
+##### Live Link: 
+
 ##### Server site repo : https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-Sarker-Rajib
 
 ###### About the project

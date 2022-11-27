@@ -48,7 +48,9 @@ const Navbar = () => {
     return (
         <nav className='p-3' style={{ background: "#efdbb4" }}>
             <div className="flex justify-between items-center">
-                <img className='max-w-[200px]' src={brandImage} alt="brand-icon" />
+                <Link to='/'>
+                    <img className='max-w-[200px]' src={brandImage} alt="brand-icon" />
+                </Link>
 
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

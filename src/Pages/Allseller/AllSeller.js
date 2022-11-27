@@ -22,6 +22,7 @@ const Allseller = () => {
     return (
         <div className='p-2'>
             <h2 className='text-2xl font-bold'>Sellers Board</h2>
+            <hr className='mb-2'/>
 
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
