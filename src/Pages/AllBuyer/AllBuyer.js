@@ -2,14 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
 import Loader from '../../Component/Loader/Loader';
-import UserCard from '../../Component/UserCard/UserCard';
+import BuyerCard from '../../Component/UserCard/BuyerCard';
 
 const AllBuyer = () => {
 
-    const { data = [], isLoading } = useQuery({
+    const { data: buyers = [], isLoading, refetch } = useQuery({
         queryKey: ["role"],
         queryFn: async () => {
-            const res = await axios('http://localhost:5000/sellers?role=buyer');
+            const res = await axios('http://localhost:5000/users?role=buyer');
             const data = res.data;
 
             return data;
@@ -35,10 +35,11 @@ const AllBuyer = () => {
 
                 <tbody>
                     {
-                        data?.map((user, i) => <UserCard
+                        buyers?.map((buyer, i) => <BuyerCard
                             key={i}
-                            user={user}
-                        ></UserCard>)
+                            buyer={buyer}
+                            refetch={refetch}
+                        ></BuyerCard>)
                     }
                 </tbody>
 

@@ -5,8 +5,7 @@ import HomeCategories from './Categories/HomeCategories';
 import ContactUs from './ContactUs/ContactUs';
 import Newsletter from './Newsletter/Newsletter';
 
-const Home = () => {
-  
+const Home = () => {  
     return (
         <div>
             <img className='mt-6' src={bannerImage} alt="banner-imag" />

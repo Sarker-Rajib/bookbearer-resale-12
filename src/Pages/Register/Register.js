@@ -31,7 +31,6 @@ const Register = () => {
 
                 const email = data.user.email;
                 const uid = data.user.uid;
-                const name = data.user.displayName;
 
                 fetch(`https://api.imgbb.com/1/upload?key=${imgbbkey}`, {
                     method: 'POST',
@@ -41,7 +40,7 @@ const Register = () => {
                     .then(imgData => {
                         const photoURL = imgData.data.display_url;
                         const profile = {
-                            displayName: name,
+                            displayName: userName,
                             photoURL: photoURL
                         }
                         updateUser(profile)

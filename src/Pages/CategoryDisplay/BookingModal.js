@@ -7,8 +7,6 @@ const BookingModal = ({ bookinData, setBookingData }) => {
     const { currentUser } = useContext(AuthContext);
     const { bookname, reSalePrice, image } = bookinData;
 
-    // console.log(bookinData);
-
     const handleBooking = event => {
         event.preventDefault();
         const phone = event.target.phone.value;

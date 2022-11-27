@@ -12,7 +12,7 @@ const Navbar = () => {
     const [isAdmin] = useAdmin(currentUser?.email);
     const [isSeller] = useSeller(currentUser?.email);
     const [isBuyer] = useBuyer(currentUser?.email);
-
+    // console.log(currentUser);
 
     const handleLogOut = () => {
         logOut();

@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const MyProductCard = ({ book }) => {
 
@@ -24,7 +25,9 @@ const MyProductCard = ({ book }) => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            if (data.acknowledged) {
+                toast.success('Item added to Advertise')
+            }
         })
     };
 
