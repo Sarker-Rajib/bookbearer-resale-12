@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
-// import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
+
 
 const Register = () => {
     const { createUser, updateUser, providerLogin } = useContext(AuthContext);
@@ -14,7 +14,6 @@ const Register = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
-
 
     const handleUserRegistration = (data) => {
         const image = data.img[0];
@@ -48,7 +47,6 @@ const Register = () => {
                                 navigate(from, { replace: true });
                                 toast.success('User Created Successful')
                             })
-
 
                         axios.post('http://localhost:5000/users', {
                             email,

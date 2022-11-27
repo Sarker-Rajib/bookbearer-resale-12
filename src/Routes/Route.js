@@ -12,6 +12,7 @@ import LogIn from "../Pages/LogIn/LogIn";
 import MyBuyers from "../Pages/MyBuyers/MyBuyers";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import MyProducts from "../Pages/MyProducts/MyProducts";
+import Payment from "../Pages/Payment/Payment";
 import Register from "../Pages/Register/Register";
 import ReportedItems from "../Pages/ReportedItems/ReportedItems";
 import AdminRoute from "./AdminRoute";
@@ -80,6 +81,13 @@ export const router = createBrowserRouter([
                 element:
                     <BuyerRoute>
                         <MyOrders></MyOrders>
+                    </BuyerRoute>
+            },
+            {
+                path: '/dashboard/myorders/payment',
+                element:
+                    <BuyerRoute>
+                        <Payment></Payment>
                     </BuyerRoute>
             },
             {

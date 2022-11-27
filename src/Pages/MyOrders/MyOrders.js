@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext/AuthProvider';
 
 const MyOrders = () => {
@@ -44,7 +45,11 @@ const MyOrders = () => {
                                 <th><img className='h-24 rounded' src={order.image} alt="cover" /></th>
                                 <th>{order.bookname}</th>
                                 <td>{order.reSalePrice}</td>
-                                <td><button className='btn'>Pay</button></td>
+                                <td>
+                                    <Link  className='btn' to='/dashboard/myorders/payment'>
+                                         Pay
+                                    </Link>
+                                </td>
                             </tr>)
                         }
                     </tbody>
