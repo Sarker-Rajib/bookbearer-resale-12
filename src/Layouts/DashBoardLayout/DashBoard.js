@@ -29,6 +29,7 @@ const DashBoard = () => {
             isSeller && <>
                 <li className='my-2'><Link className='btn text-white w-full text-lg' to='/dashboard/addproduct'>Add a Product</Link></li>
                 <li className='my-2'><Link className='btn text-white w-full text-lg' to='/dashboard/myproduct'>My Products</Link></li>
+                <li className='my-2'><Link className='btn text-white w-full text-lg' to='/dashboard/mybuyer'>My Buyers</Link></li>
             </>
         }
         {

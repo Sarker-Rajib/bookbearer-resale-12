@@ -1,34 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import tickImage from '../../../Assets/Images/tick.png';
 
 const AdvertisementCard = ({ book }) => {
+    const [sellerData, setSellerData] = useState([]);
+
     const { PurchaseTime,
         bookname,
         condition,
         description,
         location,
         mobile,
-        price,
+        reSalePrice,
         writtername,
         category,
-        image } = book;
+        image,
+        email } = book;
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                setSellerData(data);
+            })
+    }, [email]);
 
     return (
-        <div className="card card-side bg-base-100 shadow-xl border">
-            <figure><img src={image} alt="Movie" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">{bookname}</h2>
-                <p>{writtername}</p>
-                <p>{category}</p>
-                <p>{condition}</p>
-                <p>{location}</p>
-                <p>{mobile}</p>
-                <p>{description}</p>
-                <p>{PurchaseTime}</p>
-                <p>{price}</p>
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Book Now</button>
+        <div className='border rounded p-2'>
+            <div className="grid grid-cols-2">
+                <figure><img className='rounded' src={image} alt="Movie" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">{bookname}</h2>
+                    <p>Writter: {writtername}</p>
+                    <p>Category: {category}</p>
+                    <p>Condition: {condition}</p>
+                    <p>Location: {location}</p>
+                    <p>Number: {mobile}</p>
+                    <p>Des: {description}</p>
+                    <p>Date: {PurchaseTime}</p>
+                    <p>Price: {reSalePrice}</p>
                 </div>
             </div>
+
+            <h2 className='flex items-center p-2'>Seller : {sellerData[0]?.name}
+                {
+                    sellerData[0]?.verified === true && <img className='h-4 w-4 ml-2' src={tickImage} alt='tick' />
+                }
+            </h2>
+            <button className="btn btn-primary">Book Now</button>
+           
         </div>
     );
 };

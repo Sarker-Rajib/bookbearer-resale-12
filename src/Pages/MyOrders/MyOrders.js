@@ -18,7 +18,7 @@ const MyOrders = () => {
         fetch(`http://localhost:5000/bookings?email=${currentUser?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setOrders(data)
             })
 
@@ -33,7 +33,7 @@ const MyOrders = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
+                            <th>Book Name</th>
                             <th>Price</th>
                             <th>Favorite Color</th>
                         </tr>

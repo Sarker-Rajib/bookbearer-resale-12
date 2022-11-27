@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BookingModal from './BookingModal';
+import tickImage from '../../Assets/Images/tick.png'
 
 const BookCard = ({ book }) => {
     const [bookinData, setBookingData] = useState(null);
+    const [sellerData, setSellerData] = useState([]);
 
     const {
         PurchaseTime,
@@ -17,7 +19,16 @@ const BookCard = ({ book }) => {
         category,
         image,
         seller,
-        date } = book;
+        date,
+        email } = book;
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                setSellerData(data);
+            })
+    }, [email]);
 
     return (
         <div className='border rounded-lg overflow-hidden p-2 bg-stone-100 shadow-lg'>
@@ -36,13 +47,17 @@ const BookCard = ({ book }) => {
             <p>Original Price : {originalPrice} Taka</p>
             <p>Re-sale Price : {reSalePrice} Taka</p>
             <p>Location : {location}</p>
-            <p>Seller Name : {seller}</p>
+            <p className='flex items-center'>
+                Seller Name : {seller}
+                {
+                    sellerData[0]?.verified === true && <img className='h-4 w-4 ml-2' src={tickImage} alt='tick' />
+                }
+            </p>
             <p className='pb-2'>Contact : {mobile}</p>
             <label onClick={() => setBookingData(book)} htmlFor="bookingModal" className="btn">Book Now</label>
 
             <>
                 {/* booking modal */}
-
                 {
                     bookinData && <BookingModal
                         bookinData={bookinData}

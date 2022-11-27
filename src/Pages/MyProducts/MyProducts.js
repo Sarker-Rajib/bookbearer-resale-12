@@ -26,6 +26,7 @@ const MyProducts = () => {
     return (
         <div>
             <h2 className='p-2 font-bold text-lg'>Product Gallery</h2>
+            <hr />
 
             {
                 data?.map((book, i) => <MyProductCard
