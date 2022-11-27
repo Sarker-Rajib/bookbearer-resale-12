@@ -13,5 +13,8 @@
 * If there is any advertised product you can see then on homepage advertise section.
 * You can Contact us via contact form fill up.
 * You will be able to subscribe our newsletter to get our updates.
+* Tailwind and daisyui used for css frameworks.
+* Project developed based on React.js 
+* react query, react-router-dom, axios used.
 
 ##### Thank You
