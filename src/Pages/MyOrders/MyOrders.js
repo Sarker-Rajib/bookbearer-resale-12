@@ -9,14 +9,14 @@ const MyOrders = () => {
     // const { data = [], isLoading } = useQuery({
     //     queryKey: ["email"],
     //     queryFn: async () => {
-    //         const res = fetch(`http://localhost:5000/bookings?email=${currentUser.email}`)
+    //         const res = fetch(`https://bookbearer-server.vercel.app/bookings?email=${currentUser.email}`)
     //         const data = await res.json();
     //         console.log(data);
     //     },
     // })
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?email=${currentUser?.email}`)
+        fetch(`https://bookbearer-server.vercel.app/bookings?email=${currentUser?.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

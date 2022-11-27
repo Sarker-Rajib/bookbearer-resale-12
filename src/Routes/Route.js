@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/books?categoryId=${params.id}`),
+                loader: ({ params }) => fetch(`https://bookbearer-server.vercel.app/books?categoryId=${params.id}`),
                 element:
                     <PrivateRoute>
                         <CategoryDisplay></CategoryDisplay>

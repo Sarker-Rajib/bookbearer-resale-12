@@ -5,7 +5,7 @@ const BuyerCard = ({ buyer, refetch }) => {
     const { name, email, image, _id } = buyer;
 
     const handleDeleteUser = (id) => {
-        fetch(`http://localhost:5000/user/${id}`, {
+        fetch(`https://bookbearer-server.vercel.app/user/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

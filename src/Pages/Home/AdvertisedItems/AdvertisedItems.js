@@ -9,7 +9,7 @@ const AdvertisedItems = () => {
     const { data: books = [], isLoading } = useQuery({
         queryKey: ["advertise"],
         queryFn: async () => {
-            const res = await axios(`http://localhost:5000/books/advertise?advertise=true`);
+            const res = await axios(`https://bookbearer-server.vercel.app/books/advertise?advertise=true`);
             const data = res.data;
 
             return data;

@@ -6,7 +6,7 @@ const HomeCategories = () => {
     const [allCategories, setAllCategories] = useState([]);
 
     useEffect(() => {
-        axios('http://localhost:5000/bookCategories')
+        axios('https://bookbearer-server.vercel.app/bookCategories')
             .then(data => {
                 setAllCategories(data.data);
             })

@@ -83,7 +83,7 @@ const AddProduct = () => {
                     email: currentUser?.email
                 }
 
-                fetch("http://localhost:5000/books", {
+                fetch("https://bookbearer-server.vercel.app/books", {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

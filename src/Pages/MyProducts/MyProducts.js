@@ -12,7 +12,7 @@ const MyProducts = () => {
     const { data = [], isLoading } = useQuery({
         queryKey: ["email"],
         queryFn: async () => {
-            const res = await axios(`http://localhost:5000/books?email=${currentUser.email}`);
+            const res = await axios(`https://bookbearer-server.vercel.app/books?email=${currentUser.email}`);
             const data = res.data;
 
             return data;

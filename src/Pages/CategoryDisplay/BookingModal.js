@@ -13,7 +13,7 @@ const BookingModal = ({ bookinData, setBookingData }) => {
         const meetingLocation = event.target.meetingLocation.value;
         const date = new Date();
 
-        axios.post('http://localhost:5000/bookings', {
+        axios.post('https://bookbearer-server.vercel.app/bookings', {
             phoneNumber: phone,
             meetingLocation,
             name: currentUser?.displayName,

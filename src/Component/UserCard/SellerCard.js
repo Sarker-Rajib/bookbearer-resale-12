@@ -5,7 +5,7 @@ const SellerCard = ({ seller, refetch }) => {
     const { name, email, image, verified, _id } = seller;
 
     const handleDeleteUser = (id) => {
-        fetch(`http://localhost:5000/user/${id}`, {
+        fetch(`https://bookbearer-server.vercel.app/user/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -22,7 +22,7 @@ const SellerCard = ({ seller, refetch }) => {
             verified: true,
         }
 
-        fetch(`http://localhost:5000/users/seller/verify/${id}`, {
+        fetch(`https://bookbearer-server.vercel.app/users/seller/verify/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

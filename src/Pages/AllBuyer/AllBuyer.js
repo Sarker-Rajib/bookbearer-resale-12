@@ -9,7 +9,7 @@ const AllBuyer = () => {
     const { data: buyers = [], isLoading, refetch } = useQuery({
         queryKey: ["role"],
         queryFn: async () => {
-            const res = await axios('http://localhost:5000/users?role=buyer');
+            const res = await axios('https://bookbearer-server.vercel.app/users?role=buyer');
             const data = res.data;
 
             return data;

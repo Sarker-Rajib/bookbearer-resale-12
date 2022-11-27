@@ -18,7 +18,7 @@ const MyProductCard = ({ book }) => {
             advertise: "true"
         };
 
-        fetch(`http://localhost:5000/books/advertise/${id}`, {
+        fetch(`https://bookbearer-server.vercel.app/books/advertise/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(advertise)
