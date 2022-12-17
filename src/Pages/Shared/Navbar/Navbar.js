@@ -61,7 +61,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <ul className='lg:flex items-center hidden'>
+                <ul className='lg:flex items-center hidden text-white text-xl'>
                     {menuItems}
                 </ul>
             </div>
