@@ -46,7 +46,7 @@ const Navbar = () => {
     </>
 
     return (
-        <nav className='p-3' style={{ background: "#efdbb4" }}>
+        <nav className='p-3 bg-indigo-300'>
             <div className="flex justify-between items-center">
                 <Link to='/'>
                     <img className='max-w-[200px]' src={brandImage} alt="brand-icon" />

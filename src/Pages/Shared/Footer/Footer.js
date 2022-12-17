@@ -3,7 +3,7 @@ import brandImage from '../../../Assets/Images/brand-logo.png';
 
 const Footer = () => {
     return (
-        <footer style={{background: "#efdbb4"}} className="mt-8 p-2 pt-6 rounded-md">
+        <footer className="mt-8 p-2 pt-6 rounded-md bg-gray-100">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 <div className='pb-4 lg:pb-0'>
                     <img className='max-w-[200px]' src={brandImage} alt="images-brand" />
