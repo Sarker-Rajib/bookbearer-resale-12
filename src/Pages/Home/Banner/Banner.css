@@ -1,0 +1,28 @@
+.banner-home{
+    background: url(../../../Assets/Images/banner-bg.jpg) no-repeat right bottom/cover;
+    min-height: 80vh;
+    margin-top: 20px;
+    position: relative;
+}
+
+.banner-home::after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #7319af70;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.banner-home .text{
+    position: absolute;
+    z-index: 99;
+    color: #fff;
+    padding: 40px;
+}
+
+.banner-home .text span{
+    color: #ff00eafb;
+}
