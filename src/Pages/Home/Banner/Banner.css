@@ -1,8 +1,9 @@
 .banner-home{
     background: url(../../../Assets/Images/banner-bg.jpg) no-repeat right bottom/cover;
-    min-height: 80vh;
-    margin-top: 20px;
+    min-height: 90vh;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .banner-home::after{
@@ -16,11 +17,16 @@
     z-index: 1;
 }
 
+.banner-home .content-parent{
+   max-width: 1280px;
+   margin: auto;
+   flex-grow: 1;
+}
+
 .banner-home .text{
-    position: absolute;
+    position: relative;
     z-index: 99;
     color: #fff;
-    padding: 40px;
 }
 
 .banner-home .text span{

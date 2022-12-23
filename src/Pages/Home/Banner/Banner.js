@@ -5,11 +5,13 @@ import '../Banner/Banner.css';
 
 const Banner = () => {
     return (
-        <div className='banner-home flex items-center'>
-            <div className='text'>
-                <h2 className=' text-4xl pb-2'>Welcome !</h2>
-                <h3 className='text-5xl '>Buy and Sell Books <span>Online</span></h3>
-                <p className='pt-4 text-xl'>Online platform for book seller and buyer for second hand books</p>
+        <div className='banner-home'>
+            <div className="content-parent">
+                <div className='text'>
+                    <h2 className=' text-4xl pb-2'>Welcome !</h2>
+                    <h3 className='text-5xl '>Buy and Sell Books <span>Online</span></h3>
+                    <p className='pt-4 text-xl'>Online platform for book seller and buyer for second hand books</p>
+                </div>
             </div>
         </div>
     );
