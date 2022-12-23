@@ -6,6 +6,7 @@ import { AuthContext } from '../../../Contexts/AuthContext/AuthProvider';
 import useAdmin from '../../../Hooks/useAdmin';
 import useBuyer from '../../../Hooks/useBuyer';
 import useSeller from '../../../Hooks/useSeller';
+import '../Navbar/Navbar.css';
 
 const Navbar = () => {
     const { currentUser, logOut } = useContext(AuthContext);
@@ -46,7 +47,7 @@ const Navbar = () => {
     </>
 
     return (
-        <header className='p-3 bg-indigo-300'>
+        <header className='p-3 header'>
             <nav className="max-w-screen-xl mx-auto">
                 <div className="flex justify-between items-center">
                     <Link to='/'>

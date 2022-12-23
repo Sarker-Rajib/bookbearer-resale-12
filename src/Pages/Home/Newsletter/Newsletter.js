@@ -2,8 +2,9 @@ import React from 'react';
 
 const Newsletter = () => {
     return (
-        <div className='pt-8'>
-            <div className="p-2 my-4 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+        <div className='pt-24 pb-12'>
+            <div className="p-2 my-4"
+            style={{borderRadius: "15px", boxShadow:"0px 0px 10px 10px #533cda46"}}>
                <div className="p-6 bg-slate-50">
                <h2 className='text-2xl lg:text-5xl font-bold text-center pb-2'>Newsletter</h2>
                 <p className='text-center'>Great to see you ! We value your demand. If you are looking for old and gold things you can subscribe. We will send notifications for new uploaded products.</p>

@@ -40,7 +40,7 @@ const DashBoard = () => {
     return (
         <>
             <Navbar></Navbar>
-            <div className='pt-6'>
+            <div className='mt-24 dashboard max-w-screen-xl mx-auto'>
                 <label htmlFor="my-drawer-4" className="mb-4 drawer-button lg:hidden btn">Open Dahboard Menu</label>
                 <div className="drawer h-auto drawer-end">
                     <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -61,9 +61,8 @@ const DashBoard = () => {
                         </ul>
                     </div>
                 </div>
-
-                <Footer></Footer>
             </div>
+            <Footer></Footer>
         </>
     );
 };

@@ -25,7 +25,8 @@ const AdvertisementCard = ({ book }) => {
     }, [email]);
 
     return (
-        <div className="p-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+        <div className="p-2 bg-gradient-to-"
+        style={{borderRadius: "15px", boxShadow:"0px 0px 10px 5px #533cda46"}}>
             <div className="p-2 border rounded-lg bg-white h-full">
                 <div className='rounded'>
                     <div className="grid grid-cols-2">

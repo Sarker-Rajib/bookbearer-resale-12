@@ -97,8 +97,9 @@ const Register = () => {
 
 
     return (
-        <div className='py-6'>
-            <div className='max-w-sm mx-auto p-2 border rounded'>
+        <div className='py-6 mt-24'>
+            <div className='max-w-md mx-auto p-4' 
+            style={{borderRadius: "15px", border: "1px solid black", boxShadow:"0px 0px 5px 15px #533cda46"}}>
                 <h2 className='text-center text-3xl pb-3'>Register</h2>
                 <form onSubmit={handleSubmit(handleUserRegistration)}>
 

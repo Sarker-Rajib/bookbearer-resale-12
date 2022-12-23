@@ -1,6 +1,6 @@
 .banner-home{
     background: url(../../../Assets/Images/banner-bg.jpg) no-repeat right bottom/cover;
-    min-height: 90vh;
+    min-height: 95vh;
     position: relative;
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@
 
 .banner-home .text{
     position: relative;
-    z-index: 99;
+    z-index: 9;
     color: #fff;
 }
 
