@@ -7,7 +7,6 @@
 * adminEmail: admin@bookbearer.com
 * adminPassword: admin123
 
-##### Server site repo : https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-Sarker-Rajib
 
 ###### About the project
 * This a project based on the online resale market.
