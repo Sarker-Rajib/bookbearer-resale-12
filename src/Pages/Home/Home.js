@@ -1,5 +1,6 @@
 import React from 'react';
 import AdvertisedItems from './AdvertisedItems/AdvertisedItems';
+import AffiliatedBusiness from './AffiliatedBusiness/AffiliatedBusiness';
 import Banner from './Banner/Banner';
 import HomeCategories from './Categories/HomeCategories';
 import ContactUs from './ContactUs/ContactUs';
@@ -12,6 +13,7 @@ const Home = () => {
             <div className="max-w-screen-xl mx-auto">
                 <HomeCategories></HomeCategories>
                 <AdvertisedItems></AdvertisedItems>
+                <AffiliatedBusiness></AffiliatedBusiness>
                 <ContactUs></ContactUs>
                 <Newsletter></Newsletter>
             </div>

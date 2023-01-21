@@ -9,14 +9,10 @@ const BookCard = ({ book }) => {
     const {
         PurchaseTime,
         bookname,
-        condition,
-        description,
         location,
         mobile,
         originalPrice,
         reSalePrice,
-        writtername,
-        category,
         image,
         seller,
         date,
@@ -31,19 +27,12 @@ const BookCard = ({ book }) => {
     }, [email]);
 
     return (
-        <div className='rounded-lg overflow-hidden p-2 bg-white border'
-        style={{borderRadius: "15px", boxShadow:"0px 0px 10px 5px #533cda46"}}>
-            <div className='grid grid-cols-2 gap-2 pb-2'>
+        <div className='rounded-lg overflow-hidden p-2 bg-white border-4'
+            style={{ borderRadius: "15px", boxShadow: "0px 0px 10px 5px #533cda46" }}>
+            <div className='pb-2'>
                 <img className='rounded-lg' src={image} alt="bookimage" />
-                <div className='p-4'>
-                    <p className='pb-2'>Author<br /> <span className='text-green-500'>{writtername}</span>                    </p>
-                    <p className='pb-2'>Category<br /> <span className='text-green-500'>{category}</span>                    </p>
-                    <p className='pb-2'>Condition<br /> <span className='text-green-500'>{condition}</span>                    </p>
-                    <p >Description<br /> <span className='text-green-500'>{description}</span>                    </p>
-                </div>
             </div>
-            <p className='pb-2'>Book Name <br /> <span className='text-green-500 text-xl'>{bookname}</span>                    </p>
-            <p>Purchase date: {PurchaseTime}</p>
+            <p className='pb-2'><span className='text-green-500 text-xl'>{bookname}</span>                    </p>
             <p>Price : <del>{originalPrice}</del>  {reSalePrice}Taka</p>
             <p className='flex items-center'>
                 Seller Name : {seller}
